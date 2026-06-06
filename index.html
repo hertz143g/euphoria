@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Эйфория</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="phone-canvas" id="homeScreen" aria-label="Эйфория">
+      <img class="logo-img doodle" src="./logo.png" alt="Эйфория" />
+      <img class="slogan-img doodle" src="./slogan.png" alt="свобода тут!" />
+
+      <button class="image-button receive-button" type="button" id="openReceive" aria-label="Получить">
+        <img src="./receive.png" alt="" />
+      </button>
+
+      <button class="image-button enter-button" type="button" id="enterButton" aria-label="Войти">
+        <img src="./enter.png" alt="" />
+      </button>
+
+      <img class="arrow-img doodle" src="./strela.png" alt="" aria-hidden="true" />
+      <img class="photo-img doodle" src="./photo.png" alt="Домик и человечки" />
+    </main>
+
+    <section class="dashboard-screen" id="dashboardScreen" aria-label="Личный кабинет" hidden>
+      <div class="dashboard-inner">
+        <img class="dashboard-logo" src="./logo.png" alt="Эйфория" />
+        <h1>личный кабинет</h1>
+        <div class="sketch-card">
+          <h2>мои устройства</h2>
+          <p>пока пусто. потом сюда прикрутим впн.</p>
+          <button class="text-button green-button" type="button">добавить устройство</button>
+        </div>
+        <button class="text-button back-button" type="button" id="backButton">назад</button>
+      </div>
+    </section>
+
+    <div class="modal-layer" id="receiveModal" aria-hidden="true">
+      <div class="modal-backdrop" data-close-modal></div>
+      <form class="hand-modal" id="receiveForm" novalidate>
+        <button class="close-button" type="button" data-close-modal aria-label="Закрыть">x</button>
+        <h2>получить доступ</h2>
+
+        <label>
+          <span>почта</span>
+          <input type="email" name="email" autocomplete="email" />
+        </label>
+        <label>
+          <span>логин</span>
+          <input type="text" name="login" autocomplete="username" />
+        </label>
+        <label>
+          <span>пароль</span>
+          <input type="password" name="password" autocomplete="new-password" />
+        </label>
+
+        <p class="form-error" id="formError" role="alert"></p>
+        <button class="text-button submit-button" type="submit">получить</button>
+      </form>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

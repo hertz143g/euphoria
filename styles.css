@@ -1,0 +1,357 @@
+:root {
+  color-scheme: light;
+  font-family: "Comic Sans MS", "Comic Sans", "Trebuchet MS", Arial, sans-serif;
+  color: #111;
+  background: #202020;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  min-height: 100svh;
+  background: #202020;
+  overflow-x: hidden;
+  letter-spacing: 0;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.phone-canvas,
+.dashboard-screen {
+  position: relative;
+  width: min(430px, 100vw);
+  min-height: 100svh;
+  margin: 0 auto;
+  background: #eeeeee;
+  overflow: hidden;
+}
+
+.phone-canvas {
+  min-height: max(100svh, 932px);
+}
+
+.doodle,
+.image-button {
+  position: absolute;
+  display: block;
+  user-select: none;
+}
+
+.logo-img {
+  top: clamp(72px, 9.7svh, 92px);
+  left: 50%;
+  width: min(292px, 68vw);
+  transform: translateX(-50%) rotate(1.2deg);
+}
+
+.slogan-img {
+  top: clamp(196px, 23.5svh, 222px);
+  left: 50%;
+  width: min(178px, 43vw);
+  transform: translateX(-31%) rotate(-1.8deg);
+}
+
+.image-button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  line-height: 0;
+  transition: transform 130ms ease, filter 130ms ease;
+}
+
+.image-button img {
+  display: block;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+}
+
+.receive-button {
+  top: clamp(318px, 36.8svh, 350px);
+  left: calc(50% - min(116px, 27vw));
+  width: min(203px, 48vw);
+  transform: rotate(-1.6deg);
+}
+
+.receive-button:hover,
+.receive-button:focus-visible {
+  transform: scale(1.04) rotate(-0.8deg);
+  filter: brightness(1.03);
+}
+
+.receive-button:active {
+  transform: scale(0.96) rotate(-2.4deg);
+}
+
+.enter-button {
+  top: clamp(420px, 48.4svh, 452px);
+  right: min(34px, 8vw);
+  width: min(128px, 31vw);
+  transform: rotate(2.5deg);
+}
+
+.enter-button:hover,
+.enter-button:focus-visible {
+  transform: scale(1.04) rotate(3.3deg);
+  filter: brightness(1.03);
+}
+
+.enter-button:active {
+  transform: scale(0.96) rotate(1.2deg);
+}
+
+.arrow-img {
+  top: clamp(393px, 45svh, 424px);
+  left: min(116px, 27vw);
+  width: min(76px, 18vw);
+  transform: rotate(-3deg);
+}
+
+.photo-img {
+  left: 50%;
+  bottom: clamp(60px, 8.6svh, 88px);
+  width: min(334px, 78vw);
+  transform: translateX(-38%) rotate(0.9deg);
+}
+
+.modal-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal-layer.is-open {
+  display: flex;
+}
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(17, 17, 17, 0.46);
+}
+
+.hand-modal {
+  position: relative;
+  z-index: 1;
+  width: min(348px, calc(100vw - 30px));
+  padding: 24px 20px 20px;
+  border: 2px solid #111;
+  border-radius: 18px;
+  background: #f7f7f7;
+  box-shadow: 8px 8px 0 rgba(17, 17, 17, 0.22);
+  transform: rotate(-1deg);
+}
+
+.hand-modal h2,
+.dashboard-inner h1,
+.sketch-card h2 {
+  margin: 0;
+  line-height: 1.1;
+  font-weight: 700;
+  text-transform: lowercase;
+}
+
+.hand-modal h2 {
+  margin-bottom: 16px;
+  font-size: 26px;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  width: 34px;
+  height: 34px;
+  border: 2px solid #111;
+  border-radius: 50%;
+  background: #eeeeee;
+  color: #111;
+  font-size: 20px;
+  line-height: 1;
+}
+
+label {
+  display: block;
+  margin-top: 12px;
+}
+
+label span {
+  display: block;
+  margin: 0 0 5px 4px;
+  font-size: 16px;
+}
+
+input {
+  width: 100%;
+  min-height: 46px;
+  padding: 0 12px;
+  border: 2px solid #111;
+  border-radius: 11px 15px 12px 14px;
+  background: #ffffff;
+  color: #111;
+  outline: none;
+}
+
+input:focus {
+  background: #f1ffe3;
+  box-shadow: 3px 3px 0 #95f000;
+}
+
+.form-error {
+  min-height: 20px;
+  margin: 10px 3px 8px;
+  color: #b00020;
+  font-size: 14px;
+}
+
+.text-button {
+  min-height: 44px;
+  padding: 6px 18px;
+  border: 2px solid #111;
+  border-radius: 16px 13px 18px 12px;
+  background: #eeeeee;
+  color: #111;
+  font-size: 18px;
+  font-weight: 700;
+  transform: rotate(-1deg);
+  transition: transform 130ms ease, filter 130ms ease;
+}
+
+.text-button:hover,
+.text-button:focus-visible {
+  transform: scale(1.03) rotate(0.5deg);
+  filter: brightness(1.03);
+}
+
+.text-button:active {
+  transform: scale(0.96) rotate(-2deg);
+}
+
+.submit-button,
+.green-button {
+  width: 100%;
+  background: #95f000;
+}
+
+.dashboard-screen {
+  display: block;
+}
+
+.dashboard-screen[hidden] {
+  display: none;
+}
+
+.dashboard-inner {
+  display: flex;
+  min-height: 100svh;
+  flex-direction: column;
+  gap: 18px;
+  align-items: center;
+  padding: 70px 22px 34px;
+}
+
+.dashboard-logo {
+  width: min(255px, 66vw);
+  transform: rotate(1.5deg);
+}
+
+.dashboard-inner h1 {
+  align-self: flex-start;
+  margin-left: 18px;
+  font-size: 28px;
+  transform: rotate(-1deg);
+}
+
+.sketch-card {
+  width: 100%;
+  padding: 18px;
+  border: 2px solid #111;
+  border-radius: 18px 14px 20px 16px;
+  background: #f7f7f7;
+  box-shadow: 5px 5px 0 rgba(17, 17, 17, 0.18);
+  transform: rotate(0.8deg);
+}
+
+.sketch-card h2 {
+  font-size: 23px;
+}
+
+.sketch-card p {
+  margin: 12px 0 16px;
+  font-size: 17px;
+  line-height: 1.35;
+}
+
+.back-button {
+  align-self: flex-start;
+  margin-left: 16px;
+  background: #77dff0;
+}
+
+@media (min-width: 431px) {
+  body {
+    display: grid;
+    place-items: start center;
+  }
+
+  .phone-canvas,
+  .dashboard-screen {
+    min-height: 932px;
+    margin-top: 28px;
+  }
+}
+
+@media (max-width: 380px) {
+  .phone-canvas {
+    min-height: max(100svh, 820px);
+  }
+
+  .logo-img {
+    top: 68px;
+    width: 260px;
+  }
+
+  .slogan-img {
+    top: 188px;
+    width: 158px;
+  }
+
+  .receive-button {
+    top: 294px;
+    width: 184px;
+  }
+
+  .arrow-img {
+    top: 366px;
+  }
+
+  .enter-button {
+    top: 398px;
+    width: 116px;
+  }
+
+  .photo-img {
+    width: 300px;
+    bottom: 44px;
+  }
+}
