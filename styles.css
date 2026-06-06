@@ -72,7 +72,7 @@ img {
   background-image: linear-gradient(rgba(120, 150, 170, 0.15) 1px, transparent 1px),
     linear-gradient(90deg, rgba(120, 150, 170, 0.15) 1px, transparent 1px);
   background-size: 36px 36px;
-  animation: notebook-slide 7s linear infinite;
+  animation: notebook-slide 3.2s linear infinite;
 }
 
 .phone-canvas::after {
@@ -80,7 +80,7 @@ img {
   opacity: 0.18;
   background-image: linear-gradient(90deg, transparent 0, rgba(255, 255, 255, 0.7) 50%, transparent 100%);
   background-size: 180px 100%;
-  animation: paper-light 11s linear infinite;
+  animation: paper-light 5.5s linear infinite;
 }
 
 .doodle,
@@ -89,6 +89,13 @@ img {
   display: block;
   user-select: none;
   z-index: 1;
+}
+
+.logo-img,
+.slogan-img,
+.receive-button,
+.arrow-img {
+  z-index: 2;
 }
 
 .logo-img {
@@ -150,9 +157,9 @@ img {
 
 .photo-img {
   left: 50%;
-  bottom: clamp(-136px, -12svh, -86px);
-  width: min(820px, 192vw);
-  transform: translateX(-51%) rotate(0.9deg);
+  bottom: clamp(54px, 8svh, 88px);
+  width: min(820px, 190vw);
+  transform: translateX(-50%) rotate(0.9deg);
   animation: lazy-wobble-photo 7s ease-in-out infinite;
 }
 
@@ -383,8 +390,8 @@ input:focus {
   }
 
   .photo-img {
-    width: 680px;
-    bottom: -122px;
+    width: 710px;
+    bottom: 42px;
   }
 }
 
@@ -439,11 +446,11 @@ input:focus {
 @keyframes lazy-wobble-photo {
   0%,
   100% {
-    transform: translateX(-51%) rotate(0.9deg) translateY(0);
+    transform: translateX(-50%) rotate(0.9deg) translateY(0);
   }
 
   50% {
-    transform: translateX(-51%) rotate(-1.2deg) translateY(6px);
+    transform: translateX(-50%) rotate(-1.2deg) translateY(6px);
   }
 }
 
