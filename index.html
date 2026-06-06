@@ -42,11 +42,11 @@
       <div class="modal-backdrop" data-close-modal></div>
       <form class="hand-modal" id="receiveForm" novalidate>
         <button class="close-button" type="button" data-close-modal aria-label="Закрыть">x</button>
-        <img class="mail-img" src="./images/mail.png" alt="введите почту?" />
 
-        <label>
-          <span>почта</span>
-          <input type="email" name="email" autocomplete="email" />
+        <label class="mail-field">
+          <img class="mail-img" src="./images/mail.png" alt="" />
+          <span class="visually-hidden">почта</span>
+          <input class="mail-input" type="email" name="email" autocomplete="email" inputmode="email" />
         </label>
 
         <p class="form-error" id="formError" role="alert"></p>

@@ -36,6 +36,15 @@ img {
   max-width: 100%;
 }
 
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
 .phone-canvas,
 .dashboard-screen {
   position: relative;
@@ -58,17 +67,19 @@ img {
 }
 
 .logo-img {
-  top: clamp(72px, 9.7svh, 92px);
+  top: clamp(66px, 8.6svh, 82px);
   left: 50%;
-  width: min(292px, 68vw);
+  width: min(318px, 74vw);
   transform: translateX(-50%) rotate(1.2deg);
+  animation: lazy-wobble 6s ease-in-out infinite;
 }
 
 .slogan-img {
-  top: clamp(196px, 23.5svh, 222px);
+  top: clamp(188px, 22svh, 212px);
   left: 50%;
-  width: min(178px, 43vw);
+  width: min(205px, 48vw);
   transform: translateX(-31%) rotate(-1.8deg);
+  animation: tiny-float 4.8s ease-in-out infinite;
 }
 
 .image-button {
@@ -87,10 +98,11 @@ img {
 }
 
 .receive-button {
-  top: clamp(318px, 36.8svh, 350px);
-  left: calc(50% - min(116px, 27vw));
-  width: min(203px, 48vw);
+  top: clamp(306px, 35.6svh, 334px);
+  left: calc(50% - min(138px, 32vw));
+  width: min(246px, 58vw);
   transform: rotate(-1.6deg);
+  animation: button-bounce 3.9s ease-in-out infinite;
 }
 
 .receive-button:hover,
@@ -104,10 +116,11 @@ img {
 }
 
 .enter-button {
-  top: clamp(420px, 48.4svh, 452px);
-  right: min(34px, 8vw);
-  width: min(128px, 31vw);
+  top: clamp(414px, 47.4svh, 444px);
+  right: min(18px, 4.4vw);
+  width: min(154px, 36vw);
   transform: rotate(2.5deg);
+  animation: button-bounce 4.4s ease-in-out 700ms infinite reverse;
 }
 
 .enter-button:hover,
@@ -121,17 +134,19 @@ img {
 }
 
 .arrow-img {
-  top: clamp(393px, 45svh, 424px);
-  left: min(116px, 27vw);
-  width: min(76px, 18vw);
+  top: clamp(396px, 45svh, 424px);
+  left: min(104px, 24vw);
+  width: min(94px, 22vw);
   transform: rotate(-3deg);
+  animation: arrow-poke 2.8s ease-in-out infinite;
 }
 
 .photo-img {
   left: 50%;
-  bottom: clamp(60px, 8.6svh, 88px);
-  width: min(334px, 78vw);
-  transform: translateX(-38%) rotate(0.9deg);
+  bottom: clamp(22px, 4svh, 46px);
+  width: min(418px, 98vw);
+  transform: translateX(-43%) rotate(0.9deg);
+  animation: lazy-wobble-photo 7s ease-in-out infinite;
 }
 
 .modal-layer {
@@ -157,13 +172,14 @@ img {
 .hand-modal {
   position: relative;
   z-index: 1;
-  width: min(348px, calc(100vw - 30px));
-  padding: 24px 20px 20px;
+  width: min(350px, calc(100vw - 24px));
+  padding: 26px 18px 20px;
   border: 2px solid #111;
   border-radius: 18px;
   background: #f7f7f7;
   box-shadow: 8px 8px 0 rgba(17, 17, 17, 0.22);
   transform: rotate(-1deg);
+  animation: modal-pop 190ms ease-out;
 }
 
 .dashboard-inner h1,
@@ -174,11 +190,42 @@ img {
   text-transform: lowercase;
 }
 
+.mail-field {
+  position: relative;
+  display: block;
+  width: min(292px, 82vw);
+  margin: 6px auto 14px;
+  line-height: 0;
+  transform: rotate(1.8deg);
+}
+
 .mail-img {
   display: block;
-  width: min(196px, 62vw);
-  margin: 4px auto 18px;
-  transform: rotate(1.8deg);
+  width: 100%;
+}
+
+.mail-input {
+  position: absolute;
+  left: 34%;
+  right: 18%;
+  top: 58%;
+  width: auto;
+  min-height: 31px;
+  padding: 0 4px;
+  border: 0;
+  border-bottom: 2px solid #111;
+  border-radius: 0;
+  background: transparent;
+  color: #111;
+  font-size: 16px;
+  line-height: 1;
+  text-align: center;
+  transform: rotate(-1.3deg);
+}
+
+.mail-input:focus {
+  background: rgba(255, 255, 255, 0.16);
+  box-shadow: none;
 }
 
 .close-button {
@@ -340,7 +387,7 @@ input:focus {
 }
 
 .add-button {
-  width: 126px;
+  width: 148px;
   transform: rotate(1.5deg);
 }
 
@@ -369,31 +416,102 @@ input:focus {
   }
 
   .logo-img {
-    top: 68px;
-    width: 260px;
+    top: 62px;
+    width: 282px;
   }
 
   .slogan-img {
-    top: 188px;
-    width: 158px;
+    top: 178px;
+    width: 178px;
   }
 
   .receive-button {
-    top: 294px;
-    width: 184px;
+    top: 282px;
+    width: 214px;
   }
 
   .arrow-img {
-    top: 366px;
+    top: 354px;
   }
 
   .enter-button {
-    top: 398px;
-    width: 116px;
+    top: 386px;
+    width: 132px;
   }
 
   .photo-img {
-    width: 300px;
-    bottom: 44px;
+    width: 360px;
+    bottom: 22px;
+  }
+}
+
+@keyframes lazy-wobble {
+  0%,
+  100% {
+    transform: translateX(-50%) rotate(1.2deg) translateY(0);
+  }
+
+  45% {
+    transform: translateX(-50%) rotate(-1deg) translateY(4px);
+  }
+}
+
+@keyframes tiny-float {
+  0%,
+  100% {
+    transform: translateX(-31%) rotate(-1.8deg) translateY(0);
+  }
+
+  50% {
+    transform: translateX(-31%) rotate(1.2deg) translateY(-5px);
+  }
+}
+
+@keyframes button-bounce {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+
+  48% {
+    translate: 0 5px;
+  }
+
+  62% {
+    translate: 0 -2px;
+  }
+}
+
+@keyframes arrow-poke {
+  0%,
+  100% {
+    transform: rotate(-3deg) translateY(0);
+  }
+
+  50% {
+    transform: rotate(-5deg) translateY(-9px);
+  }
+}
+
+@keyframes lazy-wobble-photo {
+  0%,
+  100% {
+    transform: translateX(-43%) rotate(0.9deg) translateY(0);
+  }
+
+  50% {
+    transform: translateX(-43%) rotate(-1.2deg) translateY(6px);
+  }
+}
+
+@keyframes modal-pop {
+  from {
+    opacity: 0;
+    transform: rotate(-3deg) scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: rotate(-1deg) scale(1);
   }
 }
