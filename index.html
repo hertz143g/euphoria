@@ -19,10 +19,41 @@
       <img class="photo-img doodle" src="./images/photo-crop.png" alt="Домик и человечки" />
     </main>
 
+    <main class="phone-canvas dashboard-screen" id="dashboardScreen" aria-label="Личный кабинет" hidden>
+      <section class="dashboard-panel">
+        <img class="dashboard-logo" src="./images/logo.png" alt="Эйфория" />
+        <h1>личный кабинет</h1>
+
+        <article class="profile-note">
+          <p class="profile-email" id="dashboardEmail"></p>
+          <strong>доступ не оплачен</strong>
+        </article>
+
+        <section class="devices-box" aria-labelledby="devicesTitle">
+          <h2 id="devicesTitle">мои устройства</h2>
+          <div class="device-list" id="deviceList"></div>
+          <p class="empty-devices" id="emptyDevices">устройств пока нет</p>
+          <button class="text-button add-device-trigger" type="button" id="openDeviceModal">+ добавить устройство</button>
+        </section>
+
+        <button class="text-button logout-button" type="button" id="logoutButton">выйти</button>
+      </section>
+    </main>
+
     <div class="modal-layer" id="receiveModal" aria-hidden="true">
       <div class="modal-backdrop" data-close-modal></div>
       <form class="hand-modal" id="receiveForm" novalidate>
         <button class="close-button" type="button" data-close-modal aria-label="Закрыть">x</button>
+
+        <div class="modal-copy modal-copy-email">
+          <h2>введи почту</h2>
+          <p>пришлём код для входа</p>
+        </div>
+
+        <div class="modal-copy modal-copy-code">
+          <h2>код с почты</h2>
+          <p id="codeEmailText">мы отправили код</p>
+        </div>
 
         <label class="mail-field">
           <img class="mail-img" src="./images/mail.png" alt="" />
@@ -33,11 +64,30 @@
         <label class="code-field">
           <img class="code-img" src="./images/code.png" alt="" />
           <span class="visually-hidden">код с почты</span>
-          <input class="code-input" type="text" name="code" autocomplete="one-time-code" inputmode="numeric" />
+          <input class="code-input" type="text" name="code" autocomplete="one-time-code" inputmode="numeric" maxlength="6" />
         </label>
 
+        <p class="test-code">тестовый код: 123456</p>
         <p class="form-error" id="formError" role="alert"></p>
         <button class="text-button submit-button" type="submit">получить</button>
+        <button class="text-link change-email-button" type="button" id="changeEmailButton">изменить почту</button>
+      </form>
+    </div>
+
+    <div class="modal-layer" id="deviceModal" aria-hidden="true">
+      <div class="modal-backdrop" data-close-device></div>
+      <form class="hand-modal device-modal-card" id="deviceForm" novalidate>
+        <button class="close-button" type="button" data-close-device aria-label="Закрыть">x</button>
+        <div class="modal-copy">
+          <h2>новое устройство</h2>
+          <p>как его зовут?</p>
+        </div>
+        <label class="sketch-label">
+          <span>название устройства</span>
+          <input type="text" name="deviceName" autocomplete="off" placeholder="iPhone 16 Pro" />
+        </label>
+        <p class="form-error" id="deviceError" role="alert"></p>
+        <button class="text-button submit-button" type="submit">добавить</button>
       </form>
     </div>
 
