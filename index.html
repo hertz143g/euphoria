@@ -15,28 +15,9 @@
         <img src="./images/receive.png" alt="" />
       </button>
 
-      <button class="image-button enter-button" type="button" id="enterButton" aria-label="Войти">
-        <img src="./images/enter.png" alt="" />
-      </button>
-
       <img class="arrow-img doodle" src="./images/strela.png" alt="" aria-hidden="true" />
       <img class="photo-img doodle" src="./images/photo.png" alt="Домик и человечки" />
     </main>
-
-    <section class="dashboard-screen" id="dashboardScreen" aria-label="Личный кабинет" hidden>
-      <div class="dashboard-inner">
-        <img class="dashboard-logo" src="./images/logo.png" alt="Эйфория" />
-        <h1>личный кабинет</h1>
-        <div class="sketch-card">
-          <img class="your-img" src="./images/your.png" alt="ваши устройства:" />
-          <p>пока пусто. потом сюда прикрутим впн.</p>
-          <button class="image-button-inline add-button" type="button" aria-label="Добавить устройство">
-            <img src="./images/add.png" alt="" />
-          </button>
-        </div>
-        <button class="text-button back-button" type="button" id="backButton">назад</button>
-      </div>
-    </section>
 
     <div class="modal-layer" id="receiveModal" aria-hidden="true">
       <div class="modal-backdrop" data-close-modal></div>
@@ -46,7 +27,13 @@
         <label class="mail-field">
           <img class="mail-img" src="./images/mail.png" alt="" />
           <span class="visually-hidden">почта</span>
-          <input class="mail-input" type="email" name="email" autocomplete="email" inputmode="email" />
+          <input class="mail-input" type="email" name="email" autocomplete="email" inputmode="email" spellcheck="false" />
+        </label>
+
+        <label class="code-field">
+          <img class="code-img" src="./images/code.png" alt="" />
+          <span class="visually-hidden">код с почты</span>
+          <input class="code-input" type="text" name="code" autocomplete="one-time-code" inputmode="numeric" />
         </label>
 
         <p class="form-error" id="formError" role="alert"></p>

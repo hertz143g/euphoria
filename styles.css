@@ -45,8 +45,7 @@ img {
   white-space: nowrap;
 }
 
-.phone-canvas,
-.dashboard-screen {
+.phone-canvas {
   position: relative;
   width: min(430px, 100vw);
   min-height: 100svh;
@@ -59,11 +58,37 @@ img {
   min-height: max(100svh, 932px);
 }
 
+.phone-canvas::before,
+.phone-canvas::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.phone-canvas::before {
+  z-index: 0;
+  opacity: 0.56;
+  background-image: linear-gradient(rgba(120, 150, 170, 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(120, 150, 170, 0.15) 1px, transparent 1px);
+  background-size: 36px 36px;
+  animation: notebook-slide 7s linear infinite;
+}
+
+.phone-canvas::after {
+  z-index: 0;
+  opacity: 0.18;
+  background-image: linear-gradient(90deg, transparent 0, rgba(255, 255, 255, 0.7) 50%, transparent 100%);
+  background-size: 180px 100%;
+  animation: paper-light 11s linear infinite;
+}
+
 .doodle,
 .image-button {
   position: absolute;
   display: block;
   user-select: none;
+  z-index: 1;
 }
 
 .logo-img {
@@ -98,54 +123,36 @@ img {
 }
 
 .receive-button {
-  top: clamp(306px, 35.6svh, 334px);
-  left: calc(50% - min(138px, 32vw));
-  width: min(246px, 58vw);
-  transform: rotate(-1.6deg);
+  top: clamp(290px, 33.8svh, 316px);
+  left: 50%;
+  width: min(304px, 72vw);
+  transform: translateX(-50%) rotate(-1.6deg);
   animation: button-bounce 3.9s ease-in-out infinite;
 }
 
 .receive-button:hover,
 .receive-button:focus-visible {
-  transform: scale(1.04) rotate(-0.8deg);
+  transform: translateX(-50%) scale(1.04) rotate(-0.8deg);
   filter: brightness(1.03);
 }
 
 .receive-button:active {
-  transform: scale(0.96) rotate(-2.4deg);
-}
-
-.enter-button {
-  top: clamp(414px, 47.4svh, 444px);
-  right: min(18px, 4.4vw);
-  width: min(154px, 36vw);
-  transform: rotate(2.5deg);
-  animation: button-bounce 4.4s ease-in-out 700ms infinite reverse;
-}
-
-.enter-button:hover,
-.enter-button:focus-visible {
-  transform: scale(1.04) rotate(3.3deg);
-  filter: brightness(1.03);
-}
-
-.enter-button:active {
-  transform: scale(0.96) rotate(1.2deg);
+  transform: translateX(-50%) scale(0.96) rotate(-2.4deg);
 }
 
 .arrow-img {
-  top: clamp(396px, 45svh, 424px);
-  left: min(104px, 24vw);
-  width: min(94px, 22vw);
-  transform: rotate(-3deg);
+  top: clamp(386px, 44.3svh, 416px);
+  left: calc(50% - min(95px, 22vw));
+  width: min(128px, 30vw);
+  transform: rotate(-90deg);
   animation: arrow-poke 2.8s ease-in-out infinite;
 }
 
 .photo-img {
   left: 50%;
-  bottom: clamp(22px, 4svh, 46px);
-  width: min(418px, 98vw);
-  transform: translateX(-43%) rotate(0.9deg);
+  bottom: clamp(-136px, -12svh, -86px);
+  width: min(820px, 192vw);
+  transform: translateX(-51%) rotate(0.9deg);
   animation: lazy-wobble-photo 7s ease-in-out infinite;
 }
 
@@ -182,50 +189,33 @@ img {
   animation: modal-pop 190ms ease-out;
 }
 
-.dashboard-inner h1,
-.sketch-card h2 {
-  margin: 0;
-  line-height: 1.1;
-  font-weight: 700;
-  text-transform: lowercase;
-}
-
-.mail-field {
+.mail-field,
+.code-field {
   position: relative;
   display: block;
-  width: min(292px, 82vw);
+  width: min(310px, 82vw);
   margin: 6px auto 14px;
   line-height: 0;
   transform: rotate(1.8deg);
 }
 
-.mail-img {
+.code-field {
+  display: none;
+  transform: rotate(-1.5deg);
+}
+
+.hand-modal[data-step="code"] .mail-field {
+  display: none;
+}
+
+.hand-modal[data-step="code"] .code-field {
+  display: block;
+}
+
+.mail-img,
+.code-img {
   display: block;
   width: 100%;
-}
-
-.mail-input {
-  position: absolute;
-  left: 34%;
-  right: 18%;
-  top: 58%;
-  width: auto;
-  min-height: 31px;
-  padding: 0 4px;
-  border: 0;
-  border-bottom: 2px solid #111;
-  border-radius: 0;
-  background: transparent;
-  color: #111;
-  font-size: 16px;
-  line-height: 1;
-  text-align: center;
-  transform: rotate(-1.3deg);
-}
-
-.mail-input:focus {
-  background: rgba(255, 255, 255, 0.16);
-  box-shadow: none;
 }
 
 .close-button {
@@ -269,11 +259,61 @@ input:focus {
   box-shadow: 3px 3px 0 #95f000;
 }
 
+.mail-field .mail-input {
+  position: absolute;
+  left: 30%;
+  right: 24%;
+  top: 59%;
+  width: auto;
+  min-height: 22px;
+  padding: 0 3px;
+  border: 0;
+  border-bottom: 1.5px solid #111;
+  border-radius: 0;
+  background: transparent;
+  color: #111;
+  font-size: clamp(10px, 2.8vw, 12px);
+  line-height: 1;
+  text-align: left;
+  transform: rotate(-1.3deg);
+}
+
+.code-field .code-input {
+  position: absolute;
+  left: 31%;
+  right: 25%;
+  top: 58%;
+  width: auto;
+  min-height: 24px;
+  padding: 0 3px;
+  border: 0;
+  border-bottom: 1.5px solid #111;
+  border-radius: 0;
+  background: transparent;
+  color: #111;
+  font-size: 15px;
+  line-height: 1;
+  text-align: center;
+  letter-spacing: 1px;
+  transform: rotate(1deg);
+}
+
+.mail-field .mail-input:focus,
+.code-field .code-input:focus {
+  background: rgba(255, 255, 255, 0.14);
+  box-shadow: none;
+}
+
 .form-error {
   min-height: 20px;
   margin: 10px 3px 8px;
   color: #b00020;
   font-size: 14px;
+  text-align: center;
+}
+
+.form-error.is-success {
+  color: #168000;
 }
 
 .text-button {
@@ -299,102 +339,9 @@ input:focus {
   transform: scale(0.96) rotate(-2deg);
 }
 
-.submit-button,
-.green-button {
+.submit-button {
   width: 100%;
   background: #95f000;
-}
-
-.image-button-inline {
-  display: block;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  line-height: 0;
-  transition: transform 130ms ease, filter 130ms ease;
-}
-
-.image-button-inline img {
-  display: block;
-  width: 100%;
-  height: auto;
-  pointer-events: none;
-}
-
-.image-button-inline:hover,
-.image-button-inline:focus-visible {
-  transform: scale(1.04) rotate(1deg);
-  filter: brightness(1.03);
-}
-
-.image-button-inline:active {
-  transform: scale(0.96) rotate(-2deg);
-}
-
-.dashboard-screen {
-  display: block;
-}
-
-.dashboard-screen[hidden] {
-  display: none;
-}
-
-.dashboard-inner {
-  display: flex;
-  min-height: 100svh;
-  flex-direction: column;
-  gap: 18px;
-  align-items: center;
-  padding: 70px 22px 34px;
-}
-
-.dashboard-logo {
-  width: min(255px, 66vw);
-  transform: rotate(1.5deg);
-}
-
-.dashboard-inner h1 {
-  align-self: flex-start;
-  margin-left: 18px;
-  font-size: 28px;
-  transform: rotate(-1deg);
-}
-
-.sketch-card {
-  width: 100%;
-  padding: 18px;
-  border: 2px solid #111;
-  border-radius: 18px 14px 20px 16px;
-  background: #f7f7f7;
-  box-shadow: 5px 5px 0 rgba(17, 17, 17, 0.18);
-  transform: rotate(0.8deg);
-}
-
-.sketch-card h2 {
-  font-size: 23px;
-}
-
-.your-img {
-  display: block;
-  width: 158px;
-  transform: rotate(-1.4deg);
-}
-
-.sketch-card p {
-  margin: 12px 0 16px;
-  font-size: 17px;
-  line-height: 1.35;
-}
-
-.add-button {
-  width: 148px;
-  transform: rotate(1.5deg);
-}
-
-.back-button {
-  align-self: flex-start;
-  margin-left: 16px;
-  background: #77dff0;
 }
 
 @media (min-width: 431px) {
@@ -403,8 +350,7 @@ input:focus {
     place-items: start center;
   }
 
-  .phone-canvas,
-  .dashboard-screen {
+  .phone-canvas {
     min-height: 932px;
     margin-top: 28px;
   }
@@ -426,22 +372,19 @@ input:focus {
   }
 
   .receive-button {
-    top: 282px;
-    width: 214px;
+    top: 268px;
+    width: 258px;
   }
 
   .arrow-img {
-    top: 354px;
-  }
-
-  .enter-button {
-    top: 386px;
-    width: 132px;
+    top: 348px;
+    left: 70px;
+    width: 110px;
   }
 
   .photo-img {
-    width: 360px;
-    bottom: 22px;
+    width: 680px;
+    bottom: -122px;
   }
 }
 
@@ -485,22 +428,22 @@ input:focus {
 @keyframes arrow-poke {
   0%,
   100% {
-    transform: rotate(-3deg) translateY(0);
+    transform: rotate(-90deg) translateX(0);
   }
 
   50% {
-    transform: rotate(-5deg) translateY(-9px);
+    transform: rotate(-90deg) translateX(12px);
   }
 }
 
 @keyframes lazy-wobble-photo {
   0%,
   100% {
-    transform: translateX(-43%) rotate(0.9deg) translateY(0);
+    transform: translateX(-51%) rotate(0.9deg) translateY(0);
   }
 
   50% {
-    transform: translateX(-43%) rotate(-1.2deg) translateY(6px);
+    transform: translateX(-51%) rotate(-1.2deg) translateY(6px);
   }
 }
 
@@ -513,5 +456,25 @@ input:focus {
   to {
     opacity: 1;
     transform: rotate(-1deg) scale(1);
+  }
+}
+
+@keyframes notebook-slide {
+  0% {
+    background-position: 0 0, 0 0;
+  }
+
+  100% {
+    background-position: -36px 0, -36px 0;
+  }
+}
+
+@keyframes paper-light {
+  0% {
+    background-position: 180px 0;
+  }
+
+  100% {
+    background-position: -180px 0;
   }
 }
