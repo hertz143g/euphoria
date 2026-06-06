@@ -32,6 +32,10 @@ button {
   -webkit-tap-highlight-color: transparent;
 }
 
+img {
+  max-width: 100%;
+}
+
 .phone-canvas,
 .dashboard-screen {
   position: relative;
@@ -162,7 +166,6 @@ button {
   transform: rotate(-1deg);
 }
 
-.hand-modal h2,
 .dashboard-inner h1,
 .sketch-card h2 {
   margin: 0;
@@ -171,9 +174,11 @@ button {
   text-transform: lowercase;
 }
 
-.hand-modal h2 {
-  margin-bottom: 16px;
-  font-size: 26px;
+.mail-img {
+  display: block;
+  width: min(196px, 62vw);
+  margin: 4px auto 18px;
+  transform: rotate(1.8deg);
 }
 
 .close-button {
@@ -253,6 +258,32 @@ input:focus {
   background: #95f000;
 }
 
+.image-button-inline {
+  display: block;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  line-height: 0;
+  transition: transform 130ms ease, filter 130ms ease;
+}
+
+.image-button-inline img {
+  display: block;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+}
+
+.image-button-inline:hover,
+.image-button-inline:focus-visible {
+  transform: scale(1.04) rotate(1deg);
+  filter: brightness(1.03);
+}
+
+.image-button-inline:active {
+  transform: scale(0.96) rotate(-2deg);
+}
+
 .dashboard-screen {
   display: block;
 }
@@ -296,10 +327,21 @@ input:focus {
   font-size: 23px;
 }
 
+.your-img {
+  display: block;
+  width: 158px;
+  transform: rotate(-1.4deg);
+}
+
 .sketch-card p {
   margin: 12px 0 16px;
   font-size: 17px;
   line-height: 1.35;
+}
+
+.add-button {
+  width: 126px;
+  transform: rotate(1.5deg);
 }
 
 .back-button {

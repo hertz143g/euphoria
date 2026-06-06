@@ -44,10 +44,10 @@ document.querySelectorAll("[data-close-modal]").forEach((element) => {
 receiveForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const data = new FormData(receiveForm);
-  const hasEmptyField = ["email", "login", "password"].some((field) => !data.get(field).trim());
+  const email = data.get("email").trim();
 
-  if (hasEmptyField) {
-    formError.textContent = "заполни все поля";
+  if (!email) {
+    formError.textContent = "введи почту";
     return;
   }
 
