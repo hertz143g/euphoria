@@ -2,7 +2,7 @@ import "server-only";
 
 import { cookies } from "next/headers";
 import { generateSessionToken, hashValue } from "./crypto";
-import { supabaseAdmin } from "./supabase-admin";
+import { getSupabaseAdmin } from "./supabase-admin";
 
 const SESSION_DAYS = 30;
 const SESSION_SECONDS = SESSION_DAYS * 24 * 60 * 60;
@@ -21,6 +21,7 @@ type UserRow = {
 };
 
 export async function createSession(userId: string): Promise<string> {
+  const supabaseAdmin = getSupabaseAdmin();
   const token = generateSessionToken();
   const tokenHash = hashValue(token);
   const expiresAt = new Date(Date.now() + SESSION_MS).toISOString();
@@ -66,6 +67,7 @@ export async function clearSessionCookie(): Promise<void> {
 }
 
 export async function invalidateSession(token: string): Promise<void> {
+  const supabaseAdmin = getSupabaseAdmin();
   const tokenHash = hashValue(token);
   const { error } = await supabaseAdmin.from("sessions").delete().eq("token_hash", tokenHash);
 
@@ -75,6 +77,7 @@ export async function invalidateSession(token: string): Promise<void> {
 }
 
 export async function getCurrentUserFromSession(): Promise<{ id: string; email: string } | null> {
+  const supabaseAdmin = getSupabaseAdmin();
   const token = await getSessionToken();
 
   if (!token) {

@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { hashLoginCode } from "@/lib/crypto";
 import { createSession, setSessionCookie } from "@/lib/session";
-import { supabaseAdmin } from "@/lib/supabase-admin";
+import { getSupabaseAdmin } from "@/lib/supabase-admin";
 
 const verifyCodeSchema = z.object({
   email: z.string().email(),
@@ -20,6 +20,7 @@ type UserRow = {
 };
 
 async function findOrCreateUser(email: string): Promise<UserRow> {
+  const supabaseAdmin = getSupabaseAdmin();
   const { data: existingUser, error: selectError } = await supabaseAdmin
     .from("users")
     .select("id, email")
@@ -58,6 +59,7 @@ export async function POST(request: Request) {
 
     const email = parsed.data.email.toLowerCase().trim();
     const code = parsed.data.code;
+    const supabaseAdmin = getSupabaseAdmin();
     const { data: loginCode, error: codeError } = await supabaseAdmin
       .from("login_codes")
       .select("id, code_hash")

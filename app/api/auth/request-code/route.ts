@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { generateLoginCode, hashLoginCode } from "@/lib/crypto";
 import { sendLoginCode } from "@/lib/email";
-import { supabaseAdmin } from "@/lib/supabase-admin";
+import { getSupabaseAdmin } from "@/lib/supabase-admin";
 
 const requestCodeSchema = z.object({
   email: z.string().email(),
@@ -18,6 +18,7 @@ export async function POST(request: Request) {
     }
 
     const email = parsed.data.email.toLowerCase().trim();
+    const supabaseAdmin = getSupabaseAdmin();
     const oneMinuteAgo = new Date(Date.now() - 60 * 1000).toISOString();
     const { data: recentCode, error: rateLimitError } = await supabaseAdmin
       .from("login_codes")
